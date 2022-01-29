@@ -1,0 +1,179 @@
+.framed-row{ 
+    position: relative; 
+    --half-gutter-width: calc(var(--gutter-width) / 2);
+}
+.corner::before, .corner::after, .corner .upper-frame::after, .corner .upper-frame::before, .corner .lower-frame::before, .corner .lower-frame::after{ 
+    content: ''; 
+    width: 10px; 
+    height: 10px; 
+    background-color: var(--graphics-color); 
+    border-radius: 100%; 
+    position: absolute; 
+}
+.corner::before{ 
+    top: 70px; 
+    right: calc(var(--half-gutter-width) - 5px);
+}
+.corner::after{ 
+    left: calc(var(--half-gutter-width) - 5px); 
+    bottom: 70px;
+}
+.corner .upper-frame, .corner .lower-frame{ 
+    position: absolute; 
+}
+.corner .upper-frame{ 
+    width: 0%; 
+    height: 0%; 
+    border-top: 1px solid var(--graphics-color); 
+    border-right: 1px solid var(--graphics-color); 
+    top: 75px; 
+    right: var(--half-gutter-width); 
+    transition: 3s ease all; 
+}
+.corner .upper-frame.visible{ 
+    width: calc(50% - var(--half-gutter-width)); 
+    height: 30%; 
+}
+.corner .upper-frame::before{ 
+    top: -5px; 
+    left: -5px; 
+}
+.corner .upper-frame::after{ 
+    bottom: -5px; 
+    right: -5px; 
+}
+.corner .lower-frame{ 
+    width: calc(100% - var(--gutter-width)); 
+    height: 0%; 
+    border-left: 1px solid var(--graphics-color); 
+    left: var(--half-gutter-width); 
+    bottom: 75px; 
+    transition: width ease 5s, height ease 2.5s; 
+}
+.corner .lower-frame.visible{ 
+    height: 30%; 
+}
+.corner .lower-frame::before{ 
+    top: -5px; 
+    left: -5px; 
+}
+.corner .lower-frame::after{ 
+    bottom: -5px; 
+    right: -5px;
+}
+.corner .lower-frame .curve{ 
+    width: 100%; 
+    position: absolute; 
+    left: 0; 
+    bottom: -2px; 
+}
+.corner .lower-frame .curve path{ 
+    fill: none; 
+    stroke: var(--graphics-color); 
+    stroke-width: 1px; 
+    stroke-dasharray: 2566; 
+    stroke-dashoffset: 2566; 
+    transition: 15s ease all; 
+}
+.corner .lower-frame.visible .curve path{ 
+    stroke-dashoffset: 0; 
+    transition: 9s ease all; 
+}
+
+/*Full frame styles*/
+.framed-row.full{
+    --gutter-height: 4px;
+    padding-bottom: 150px;
+}
+.framed-row.full .upper-frame, .framed-row.full .lower-frame{
+    width: 0;
+    height: 1px;
+    background-color: var(--graphics-color);
+    position: absolute;
+    left: 50%;
+    transition: 2.5s ease all;
+}
+.framed-row.full .upper-frame{ 
+    top: calc(var(--gutter-height) + 3.53em);
+}
+.framed-row.full .lower-frame{
+    bottom: 75px;
+}
+.framed-row.full .upper-frame.visible, .framed-row.full .lower-frame.visible{
+    width: calc(100% - var(--gutter-width));
+    left: var(--half-gutter-width);
+    transition: 2.5s ease all;
+}
+.framed-row.full .upper-frame::before, .framed-row.full .upper-frame::after, .framed-row.full .lower-frame::before, .framed-row.full .lower-frame::after{
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background-color: var(--graphics-color);
+    position: absolute;
+    top: -5px;
+}
+.framed-row.full .upper-frame::before, .framed-row.full .lower-frame::before{
+    left: -5px;
+}
+.framed-row.full .upper-frame::after, .framed-row.full .lower-frame::after{
+    right: -5px;
+}
+.framed-row.full .top-left-border{
+    height: 60%;
+    fill: none;
+    stroke: var(--graphics-color);
+    stroke-width: 2px;
+    position: absolute;
+    top: calc(var(--gutter-height) + 3.53em);
+    left: var(--half-gutter-width);
+    stroke-dasharray: 1800;
+    stroke-dashoffset: 1800;
+}
+.framed-row.full .top-left-border.visible{
+    stroke-dashoffset: 0;
+    transition: 7s ease all;
+}
+.framed-row.full .top-right-border{
+    height: 40%;
+    fill: none;
+    stroke: var(--graphics-color);
+    stroke-width: 2px;
+    position: absolute;
+    top: calc(var(--gutter-height) + 3.53em);
+    right: var(--half-gutter-width);
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    transform: rotateY(180deg);
+}
+.framed-row.full .top-right-border.visible{
+    stroke-dashoffset: 0;
+    transition: 5s ease all;
+}
+.framed-row.full .bottom-left-border, .framed-row.full .bottom-right-border{
+    fill: none;
+    stroke: var(--graphics-color);
+    stroke-width: 2px;
+    position: absolute;
+    bottom: 75px;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    transform: rotateZ(180deg);
+}
+.framed-row.full .bottom-left-border{
+    height: 40%;
+    left: var(--half-gutter-width);
+    transform: rotateX(180deg);
+}
+.framed-row.full .bottom-right-border{
+    height: 60%;
+    right: var(--half-gutter-width);
+}
+.framed-row.full .bottom-left-border.visible, .framed-row.full .bottom-right-border.visible{
+    stroke-dashoffset: 0;
+    transition: 5s ease all;
+}
+
+@media(max-width: 500px){
+    .framed-row p, .framed-row h2, .framed-row ul{ background-color: var(--background-color); position: relative; z-index: 2;}
+}

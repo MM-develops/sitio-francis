@@ -1,0 +1,80 @@
+.header{
+    width: 100%;
+    padding: 15px 5%;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+}
+.header-icon img{
+    width: 60px;
+}
+.header-menu{
+    padding: 2px 10.5px 5px 0;
+    border-bottom: 1px solid var(--graphics-color);
+    position: absolute;
+    top: 26px;
+    right: calc(5% + 33.5px);
+    transition: 0.5s ease all;
+}
+/*.header-menu::before{
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 100%;
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+}*/
+.header-menu-inner{
+    width: 0;
+    height: 19.2px;
+    overflow: hidden;
+    transition: 0.5s ease all;
+}
+.header-menu.opened .header-menu-inner{
+    width: 470px;
+    transition: 0.5s ease all;
+}
+.header-link{
+    margin: 10px 10px;
+}
+.header-link:hover{ opacity: 0.5; transition: 0.2s ease all; }
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+.sub-header-link{
+    height: 0;
+    position: absolute;
+    top: 1em;
+    left: 0;
+}
+.content{
+    padding-top: 150px;
+}
+@media(min-width: 810px) {
+    .header-menu.hovered .header-menu-inner{
+        height: 41px;
+    }
+}
+
+@media(max-width: 810px){
+    .header-icon img{ width: 60px; }
+    .header-menu{ top: 50px; right: calc(5% + 30px); }
+    .header-menu{ height: 0; padding-right: 0; border-bottom: 0; border-right: 1px solid var(--graphics-color); top: 57px; }
+    .header-menu.opened{ height: 209px; padding-top: 50px; }
+    .header-menu::before{ top: -5px; bottom: unset; }
+    .header-menu .header-menu-inner{ width: 0; height: 156px; display: flex; flex-direction: column; }
+    .header-menu.opened .header-menu-inner{ width: 150px; }
+    .sub-header-link{ position: initial; height: auto; margin-left: 10px; }
+}
+@media(max-width: 500px){
+    .header-logo-wrapper img{ width: 130px; }
+    .header-icon img{ width: 50px; }
+    .header-menu{ top: 50px; right: calc(4% + 30px); }
+}

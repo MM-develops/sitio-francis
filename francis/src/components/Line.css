@@ -1,0 +1,153 @@
+.lined-row{ 
+    position: relative; 
+    z-index: 2; 
+}
+.lined-row .line{ 
+    width: 0%; 
+    height: 0.5px; 
+    background-color: var(--graphics-color); 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    z-index: -1;  
+    transition: 2.5s ease all; 
+}
+.lined-row .line.visible{ 
+    width: calc(100% - var(--gutter-width)); 
+    left: calc(var(--gutter-width) / 2); 
+    transition: 2.5s ease all; 
+}
+.lined-row .line.full{ 
+    --full-column-gutter: calc(var(--column-gutter-width) * 2); 
+    --half-gutter: calc(var(--gutter-width) / 2); 
+    --width-plus-gutter: calc(var(--full-column-gutter) + var(--half-gutter)); 
+    --left-sizing: calc(var(--half-gutter) + var(--column-gutter-width)); 
+    width: 0;
+    left: calc(var(--left-sizing) * -1); 
+}
+.lined-row .line.full.visible{
+    width: calc(100% + var(--width-plus-gutter)); 
+}
+.lined-row.half .line{ 
+    --half-gutter-width: calc(var(--gutter-width) / 2); 
+    width: 0; 
+    left: calc(var(--half-gutter-width) * -1); 
+}
+.lined-row.half .line.visible{ 
+    width: calc(100% + var(--half-gutter-width)); 
+}
+.lined-row .line.bottom{ 
+    top: unset; 
+    bottom: calc(var(--gutter-height) / 2);
+}
+.lined-row.image-background .line.top{ 
+    top: 28%; 
+}
+.lined-row.image-background .line.bottom{ 
+    top: unset; 
+    bottom: 12%; 
+}
+.lined-row .line.top{ 
+    top: calc(var(--gutter-height) / 2); 
+}
+.lined-row .line.top.p100{
+    top: 95px;
+}
+.lined-row.half .line.right{ 
+    left: unset; 
+    right: calc(var(--half-gutter-width) * -1); 
+}
+.lined-row.half .line.top{ 
+    top: calc(var(--gutter-height) / 2); 
+} 
+.lined-row .line::after, .lined-row .line::before{ 
+    content: ''; 
+    width: 10px; 
+    height: 10px; 
+    background-color: var(--graphics-color); 
+    border-radius: 100%; 
+    position: absolute; 
+    top: calc(50% - 5px); 
+}
+.lined-row .line::after{ 
+    right: -5px; 
+}
+.lined-row .line::before{ 
+    left: -5px; 
+}
+
+
+/*Vertical lines*/
+.lined-row.half .line.vertical{
+    width: 68px;
+    height: 100%;
+    top: calc(var(--gutter-height) / 2);
+    left: -61.5px;
+    background-color: transparent;
+    overflow: hidden;
+}
+.lined-row.half .line.vertical::after, .lined-row.half .line.vertical::before{
+    display: none;
+}
+.lined-row.half .line.vertical svg{
+    fill: none;
+    stroke: var(--graphics-color);
+    stroke-width: 3px;
+    position: absolute;
+    bottom: 0;
+    right: -25%;
+    height: 500px;
+    stroke-dasharray: 2566; 
+    stroke-dashoffset: 2566;
+    transform: rotateX(180deg) rotateY(180deg);
+    transition: 6s ease all;
+}
+.lined-row.half .line.vertical.visible svg{
+    stroke-dashoffset: 0;
+    transition: 6s ease all;
+}
+.lined-row.half .line.vertical.left{
+    --gutter-space: calc(var(--half-gutter-width) + 61.5px);
+    left: unset;
+    right: -59.5px; /*calc(var(--gutter-space) * -1);*/
+    transform: rotateY(180deg);
+}
+.lined-row.half .line.vertical.right{
+    left: unset;
+    top: unset;
+    bottom: calc(var(--gutter-height) / 2);
+    right: -64.5px;
+}
+.lined-row.half .line.vertical.right svg{
+    left: unset;
+    right: 0;
+    transform: rotateY(180deg);
+}
+.lined-row.half .line.right.v-flip svg{
+    top: unset;
+    left: unset;
+    top: unset;
+    bottom: -2%;
+    right: -13%;
+    transform: rotateZ(0deg) rotateX(0deg);
+}
+.lined-row .graphic-4{
+    width: 500px;
+    height: 200px;
+    border: 1px solid var(--graphics-color);
+    border-radius: 100%;
+    position: absolute;
+    top: -100px;
+    left: calc(50% - 250px);
+    transform: rotateZ(-45deg);
+}
+
+@media(max-width: 800px){
+    .lined-row.half .line.vertical svg{ top: unset; bottom: 0; transform: rotateX(180deg); }
+    .lined-row.half .line.visible{ width: calc(100% + var(--gutter-width)); }
+    .lined-row.half .line.vertical{ width: 68px; --gutter-space: calc(var(--half-gutter-width) + 12px); left: calc(var(--gutter-space) * -1); }
+    .lined-row.half .line.vertical.right{ --gutter-space: calc(var(--half-gutter-width) + 6px); right: calc(var(--gutter-space) * -1 ); transform: rotateY(180deg); }
+    .lined-row .line.m-top{ top: 195px; }
+    .lined-row.half .line.vertical.left{ --gutter-space: calc(var(--half-gutter-width) + 13px); right: calc(var(--gutter-space) * -1); }
+    .lined-row .graphic-4{ max-width: 100%; left: 0; }
+}

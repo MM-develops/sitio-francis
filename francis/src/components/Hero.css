@@ -1,0 +1,55 @@
+.center-graphic{
+    width: 0;
+    height: 0;
+    border: 1px solid var(--graphics-color);
+    border-radius: 100%;
+    position: absolute;
+    top: 50%;
+}
+.graphic-1.visible .center-graphic{
+    width: 12%;
+    min-width: 200px;
+    height: 76%;
+    top: 12%;
+    transition: 1s ease all;
+}
+.graphic-2.visible .center-graphic{
+    width: 450px;
+    height: 450px;
+    top: calc(50% - 225px);
+    transition: 1s ease all;
+}
+.graphic-2.visible .center-graphic::after{
+    content: '';
+    width: 0;
+    height: 0;
+    border: 1px solid var(--graphics-color);
+    border-radius: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+.graphic-2.visible .center-graphic::after{
+    content: '';
+    width: 50%;
+    height: 100%;
+    top: 0;
+    left: 25%;
+    transform: rotateZ(45deg);
+    transition: 1s ease all;
+}
+.graphic-3.visible .center-graphic{
+    width: 40%;
+    height: 30%;
+    border: 1px solid var(--graphics-color);
+    border-radius: 100%;
+    top: 35%;
+    transition: 1s ease all;
+}
+@media(max-width: 800px){
+    .graphic-2.visible .center-graphic{
+        width: 350px;
+        height: 350px;
+        top: calc(50% - 175px);
+    }
+}

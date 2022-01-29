@@ -1,0 +1,49 @@
+form{
+    max-width: 350px;;
+    display: block;
+    margin: auto;
+}
+form .input-row{
+    text-align: right;
+    margin-bottom: 20px;
+}
+form input[type="text"], form input[type="email"]{
+    font-size: 1.1em;
+    width: 250px;
+    padding: 5px;
+    margin-left: 15px;
+    outline: none;
+    border: none;
+}
+form.outline input[type="text"], form.outline input[type="email"]{
+    color: white;
+    background-color: transparent;
+    border: 2px solid white;
+}
+form button{
+    width: 100%;
+    color: white;
+    background: black;
+    padding: 5px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s ease all;
+}
+form button:hover{
+    color: #231f20;
+    background-color: #c6dedf;
+    transition: 0.5s ease all;
+}
+form.outline button{
+    font-weight: 600;
+    color: #9db6af;
+    background-color: white;
+    border: 2px solid white;
+    transition: 0.4s ease all;
+}
+form.outline button:hover{
+    color: white;
+    background-color: transparent;
+    transition: 0.4s ease all;
+}

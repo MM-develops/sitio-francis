@@ -1,0 +1,71 @@
+.box{
+    --half-gutter-width: calc(var(--gutter-width) / 2);
+    padding: var(--gutter-height) var(--gutter-width);
+    position: relative;
+}
+.box .vertical-line{
+    width: 0;
+    height: 1px;
+    background-color: var(--graphics-color);
+    position: absolute;
+    left: 50%;
+    transition: 4s ease all;
+    z-index: 1;
+}
+.box.visible .vertical-line{
+    width: calc(100% - var(--gutter-width));
+    left: calc(var(--gutter-width) / 2);
+}
+.box .vertical-line::before, .box .vertical-line::after{
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: var(--graphics-color);
+    border-radius: 100%;
+    position: absolute;
+    top: -5px;
+}
+.box .vertical-line::before{
+    left: -5px;
+}
+.box .vertical-line::after{
+    right: -5px;
+}
+.box.top .vertical-line{
+    top: 50%;
+}
+
+.box .left-border, .box .right-border{
+    width: 90px;
+    fill: none;
+    stroke: var(--graphics-color);
+    stroke-width: 1px;
+    position: absolute;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+}
+.box.top .left-border, .box.top .right-border{
+    top: 50%;
+}
+.box .left-border{
+    left: var(--half-gutter-width);
+}
+.box .right-border{
+    right: var(--half-gutter-width);
+    transform: rotateY(180deg);
+}
+.box.visible .left-border, .box.visible .right-border{
+    stroke-dashoffset: 0;
+    transition: 5s ease all;
+}
+
+.box.bottom .vertical-line{
+    bottom: calc(var(--gutter-height) + 30px);
+}
+.box.bottom .left-border, .box.bottom .right-border{
+    transform: rotateX(180deg);
+    bottom: calc(var(--gutter-height) + 30px);
+}
+.box.bottom .right-border{
+    transform: rotateX(180deg) rotateY(180deg);
+}
